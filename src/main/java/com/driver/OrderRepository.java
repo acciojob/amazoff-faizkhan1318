@@ -65,8 +65,11 @@ public class OrderRepository {
         orderPartnerMap.remove(id);
     }
 
-    public String getPartnerForOrder(String orderId) {
-        return orderPartnerMap.get(orderId);
+    public Optional<String> getPartnerForOrder(String orderId) {
+        if(orderPartnerMap.containsKey(orderId)){
+            return Optional.of(orderPartnerMap.get(orderId));
+        }
+        return Optional.empty();
     }
 
     public void deleteOrder(String orderId) {

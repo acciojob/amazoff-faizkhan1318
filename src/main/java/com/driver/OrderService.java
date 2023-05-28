@@ -113,15 +113,11 @@ public class OrderService {
     }
 
     public void deleteOrder(String orderId) {
-        String partnerId = orderRepository.getPartnerForOrder(orderId);
+        Optional<String> partnerIdOpt = orderRepository.getPartnerForOrder(orderId);
         orderRepository.deleteOrder(orderId);
-        if(Objects.nonNull(partnerId)) {
-            DeliveryPartner p = orderRepository.getPartnerById(partnerId).get();
-            Integer initialOrders = p.getNumberOfOrders();
-            initialOrders--;
-            p.setNumberOfOrders(initialOrders);
-            orderRepository.addPartner(p);
-            orderRepository.removeOrderForPartner(partnerId, orderId);
+        if(partnerIdOpt.isPresent()){
+            List<String> orderIds=orderRepository.getOrderForPartner(partnerIdOpt.get());
+            orderIds.remove(orderId);
         }
     }
 }
