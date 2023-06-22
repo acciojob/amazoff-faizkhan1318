@@ -7,7 +7,15 @@ public class TimeUtils {
         int mm=deliveryTime%60;
         String HH=String.valueOf(hh);
         String MM=String.valueOf(mm);
-        return String.format("%s:%s", HH, MM);
+        //return String.format("%s:%s", HH, MM);
+        if(HH.length() == 1) {
+            HH = '0' + HH;
+        }
+        if(MM.length() == 1) {
+            MM = '0' +MM;
+        }
+
+        return HH + ":" + MM;
     }
     public static int convertDeliveryTime(String deliveryTime) {
         String[] time = deliveryTime.split(":");
