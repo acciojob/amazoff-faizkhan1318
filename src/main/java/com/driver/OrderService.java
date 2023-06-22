@@ -26,7 +26,7 @@ public class OrderService {
         Optional<DeliveryPartner> partnerOpt = orderRepository.getPartnerById(partnerId);
         if(orderOpt.isEmpty()){
             //log.warn("order id is not present: " + orderId);
-            throw new RuntimeException("Orderid is nor present: "+ orderId);
+            throw new RuntimeException("OrderId is not present: "+ orderId);
         }
         if(partnerOpt.isEmpty()){
             throw new RuntimeException("partnerId is not present: "+partnerId);

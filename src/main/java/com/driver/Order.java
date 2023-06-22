@@ -3,10 +3,8 @@ package com.driver;
 import java.sql.Time;
 
 public class Order {
-
     private String id;
     private int deliveryTime;
-
     public Order(String id, String deliveryTime) {
         this.deliveryTime = TimeUtils.convertDeliveryTime(deliveryTime);
         this.id=id;
@@ -24,19 +22,18 @@ public class Order {
 //        String MM=String.valueOf(mm);
 //        return String.format("%s:%s", HH, MM);
 //    }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getId() {
         return id;
     }
-
     public int getDeliveryTime() {return deliveryTime;}
-
-    public String getDeliveryTimeAsString(){
-        return TimeUtils.convertDeliveryTime(this.deliveryTime);
+//    public String getDeliveryTimeAsString(){
+//        return TimeUtils.convertDeliveryTime(this.deliveryTime);
+//    }
+    public void setDeliveryTime(int deliveryTime){
+        this.deliveryTime=deliveryTime;
     }
     public void setDeliveryTime(String deliveryTime){
         this.deliveryTime= TimeUtils.convertDeliveryTime(deliveryTime);
