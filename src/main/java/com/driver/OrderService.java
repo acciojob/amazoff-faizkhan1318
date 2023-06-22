@@ -92,7 +92,7 @@ public class OrderService {
     }
 
     public String getLastDeliveryTimeByPartnerId(String partnerId) {
-        List<String> orderIds = orderRepository.getOrderForPartner(partnerId);
+        List<String> orderIds = orderRepository.getAllOrderfromPartner(partnerId);
         int maxTime=0;
         for(String orderId:orderIds){
             int deliveryTime = orderRepository.getOrderById(orderId).get().getDeliveryTime();

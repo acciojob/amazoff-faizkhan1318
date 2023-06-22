@@ -82,4 +82,8 @@ public class OrderRepository {
         orderIds.remove(orderId);
         partnerOrderMap.put(partnerId, orderIds);
     }
+
+    public List<String> getAllOrderfromPartner(String partnerId) {
+        return partnerOrderMap.get(partnerId);
+    }
 }
